@@ -1,4 +1,6 @@
 package com.paynestsystem.app;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,12 @@ public class Order {
     private final List<OrderItem> items;
 
     public Order(int id, Customer customer) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("Order id must be greater than zero.");
+        }
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer cannot be null.");
+        }
         this.id = id;
         this.customer = customer;
         this.items = new ArrayList<>();
@@ -16,25 +24,19 @@ public class Order {
 
     public void addItem(Product product, int quantity) {
         if (product == null || quantity <= 0) {
-        throw new IllegalArgumentException("Product cannot be null and quantity must be greater than zero.");
+            throw new IllegalArgumentException("Product cannot be null and quantity must be greater than zero.");
         }
-
-        if (quantity <= 0) {
-        throw new IllegalArgumentException("Quantity must be greater than zero.");
-    }
         items.add(new OrderItem(product, quantity));
     }
 
-    public double calculateTotal() {
-        double total = 0.0;
-        for (OrderItem item : items) {
-            total += item.calculateTotal();
-        }
-        return total;
+    public BigDecimal calculateTotal() {
+        return items.stream()
+            .map(OrderItem::calculateTotal)
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public List<OrderItem> getItems() {
-        return items;
+        return List.copyOf(items);
     }
 
     public int getId() {

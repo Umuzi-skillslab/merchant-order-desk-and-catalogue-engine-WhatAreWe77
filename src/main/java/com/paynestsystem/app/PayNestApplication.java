@@ -8,11 +8,13 @@ public class PayNestApplication {
         Customer customer = new Customer(1, "Rele-Mbokazi Mkhize", "mbokazimkhize@yahoo.co.za");
 
         Order order = new Order(1, customer);
-
         order.addItem(smartphone, 1);
         order.addItem(smartwatch, 3);
 
         OrderService orderService = new OrderService();
-        orderService.printSummary(order);
+        OrderSummary orderSummary = orderService.createOrderSummary(order);
+
+        OrderSummaryPrinter printer = new OrderSummaryPrinter();
+        printer.print(orderSummary);
     }
 }

@@ -40,7 +40,7 @@ src/test/java/com/paynestsystem/app/
 
 1. Clone the repository:
    `bash
-   git clone https://github.com/Umuzi-skillslab/e12_java-merchant-order-desk-and-catalogue-engine-Merchant-order-desk-and-catalogue-engine.git
+   git clone https://github.com/Umuzi-skillslab/merchant-order-desk-and-catalogue-engine-WhatAreWe77.git
    `
 
 2. Compile the project:

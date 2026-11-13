@@ -1,35 +1,50 @@
 # PayNest — Merchant Order Desk & Catalogue Engine
 
-A Java application for managing merchant orders, customers, and product catalogues.
+A Java console application for managing customers, products, and orders, with a sample payment-processing flow.
 
 ## Overview
 
-PayNest models a simplified order management system, handling customers, products, and orders (including individual order line items) through a service layer.
+PayNest models a simplified order management system. It creates an order for a customer, prints an invoice-style summary, and processes the order total through a selectable payment method. The demo application currently uses a card payment with placeholder details.
 
 ## Tech Stack
 
 - **Language:** Java
 - **Build Tool:** Apache Maven
-- **Package:** `com.paynestsystem.app`
+- **Base package:** `com.paynestsystem.app`
+- **Java version:** 21
 
 ## Project Structure
 
-pom.xml
+```text
 src/main/java/com/paynestsystem/app/
-    ├── PayNestApplication.java
-    ├── Customer.java
-    ├── Product.java
-    ├── Order.java
-    ├── OrderItem.java
+├── app/
+│   └── PayNestApplication.java
+├── domain/
+│   ├── Customer.java
+│   ├── Order.java
+│   ├── OrderItem.java
+│   └── Product.java
+├── payment/
+│   ├── BuyNowPayLater.java
+│   ├── CardPayment.java
+│   ├── EftPayment.java
+│   ├── PaymentMethod.java
+│   ├── PaymentProcessor.java
+│   └── WalletPayment.java
+└── service/
     ├── OrderService.java
     ├── OrderSummary.java
-    ├── OrderSummaryPrinter.java
+    └── OrderSummaryPrinter.java
 
-src/test/java/com/paynestsystem/app/
+src/test/java/
+├── com/paynestsystem/
+│   └── PaymentMethodTest.java
+└── com/paynestsystem/app/
     ├── OrderTest.java
     ├── OrderItemTest.java
     ├── OrderServiceTest.java
     └── OrderSummaryPrinterTest.java
+```
 
 ## Prerequisites
 
@@ -39,50 +54,36 @@ src/test/java/com/paynestsystem/app/
 ## Getting Started
 
 1. Clone the repository:
-   `bash
+   ```bash
    git clone https://github.com/Umuzi-skillslab/merchant-order-desk-and-catalogue-engine-WhatAreWe77.git
-   `
+   ```
 
 2. Compile the project:
-   `bash
+   ```bash
    mvn compile
-   `
+   ```
 
 3. Run tests:
-   `bash
+   ```bash
    mvn test
-   `
+   ```
 
 4. Run the application:
-   `bash
+   ```bash
    mvn exec:java
-   `
+   ```
 
-## Expected Output
-
-```text
-PayNest Invoice Summary
-Order ID: 1
-Customer : Rele-Mbokazi Mkhize
-Email  : mbokazimkhize@yahoo.co.za
-Items Ordered:
-- Samsung Galaxy S26 Ultra x 1 @ R27,999.99 = R27,999.99
-- Samsung Galaxy Watch 6 Classic x 3 @ R4,999.99 = R14,999.97
-Total Amount: R42,999.96
-```
+The application prints an order summary followed by a payment confirmation. Currency values are displayed with two decimal places using South African locale formatting.
 
 ## Features
 
-- Customer management
-- Product catalogue
-- Order creation and tracking
-- Order item / line item handling
-- Business logic through `OrderService`
-- Immutable order summary with `OrderSummary`
-- Console invoice printing separated into `OrderSummaryPrinter`
-- Precision money handling with `BigDecimal`
+- Customer and product domain models
+- Order creation and line-item handling
+- Order summary generation through `OrderService`
 - Locale-aware South African currency formatting
-- Unit tests for order, item, service, and printer behavior
+- Payment method abstraction with card, EFT, wallet, and buy-now-pay-later implementations
+- Payment processing that reports the payment type and amount
+- Unit tests for order, item, service, summary printing, and payment methods
 
 ## Author
 

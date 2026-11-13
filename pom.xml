@@ -43,7 +43,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>com.paynestsystem.app.PayNestApplication</mainClass>
+                    <mainClass>com.paynestsystem.app.app.PayNestApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>

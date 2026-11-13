@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
+import com.paynestsystem.app.domain.Customer;
+import com.paynestsystem.app.domain.Order;
+import com.paynestsystem.app.domain.Product;
+
 public class OrderTest {
 
     @Test

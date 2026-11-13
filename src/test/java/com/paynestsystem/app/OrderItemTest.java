@@ -1,9 +1,12 @@
 package com.paynestsystem.app;
-
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+
+import com.paynestsystem.app.domain.Customer;
+import com.paynestsystem.app.domain.Order;
+import com.paynestsystem.app.domain.Product;
 
 public class OrderItemTest {
 

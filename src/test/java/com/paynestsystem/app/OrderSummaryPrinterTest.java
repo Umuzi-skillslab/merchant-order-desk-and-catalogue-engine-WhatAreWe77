@@ -11,6 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.paynestsystem.app.domain.Customer;
+import com.paynestsystem.app.domain.Order;
+import com.paynestsystem.app.domain.Product;
+import com.paynestsystem.app.service.OrderService;
+import com.paynestsystem.app.service.OrderSummary;
+import com.paynestsystem.app.service.OrderSummaryPrinter;
+
 public class OrderSummaryPrinterTest {
 
     private final PrintStream originalOut = System.out;

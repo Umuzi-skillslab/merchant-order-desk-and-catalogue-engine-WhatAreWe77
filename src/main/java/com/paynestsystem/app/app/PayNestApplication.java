@@ -34,8 +34,9 @@ public class PayNestApplication {
             new BigDecimal("50000.00")
         );
         PaymentMethod paymentMethod = walletPayment;
+        System.out.println("Wallet balance: R" + String.format("%.2f", walletPayment.getBalance()));
         orderService.checkout(order, paymentMethod);
-        System.out.println("Remaining wallet balance: R" + String.format("%.2f", walletPayment.getBalance()));
+        System.out.println("Wallet balance: R" + String.format("%.2f", walletPayment.getBalance()));
 
     }
 }

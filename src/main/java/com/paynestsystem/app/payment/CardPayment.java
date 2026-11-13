@@ -11,6 +11,7 @@ public class CardPayment extends PaymentMethod { // check if you can extend rath
     private final YearMonth expiryDate;
     private final char cvv;
     private enum cardType {Debit, Credit};
+    private final BigDecimal limit;
 
     @Override
     public String toString() {
@@ -25,6 +26,9 @@ public class CardPayment extends PaymentMethod { // check if you can extend rath
     public boolean processPayment(BigDecimal amount) {
         validateAmount(amount);
         System.out.println("Processing card payment of R" + String.format("%.2f", amount));
+        if (amount.compareTo(limit) > 0) {
+            return false;
+        }
         return true; // Simulate successful payment
     }
 
@@ -40,7 +44,7 @@ public class CardPayment extends PaymentMethod { // check if you can extend rath
         return "**** **** **** " + number.substring(number.length() - 4);
     }
 
-    public CardPayment(String cardHolderName, String cardNumber, YearMonth expiryDate, char cvv) {
+    public CardPayment(String cardHolderName, String cardNumber, YearMonth expiryDate, char cvv, BigDecimal limit) {
 
         if (cardHolderName == null || cardHolderName.isBlank()) {
             throw new IllegalArgumentException("Card holder name cannot be blank.");
@@ -54,11 +58,15 @@ public class CardPayment extends PaymentMethod { // check if you can extend rath
         if (cvv <= 0) {
             throw new IllegalArgumentException("CVV must be greater than zero.");
         }
+        if (limit == null || limit.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Card limit must not be zero or negative.");
+        }
 
         this.cardHolderName = cardHolderName;
         this.cardNumber = cardNumber;
         this.expiryDate = expiryDate;
         this.cvv = cvv;
+        this.limit = limit;
     }
 
         public String getCardHolderName() {
@@ -75,6 +83,10 @@ public class CardPayment extends PaymentMethod { // check if you can extend rath
 
         public char getCvv() {
             return cvv;
+        }
+
+        public BigDecimal getLimit() {
+            return limit;
         }
 
         public cardType getCardType() {

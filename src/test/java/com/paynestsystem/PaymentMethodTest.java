@@ -5,6 +5,7 @@ import java.time.YearMonth;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,8 @@ import com.paynestsystem.app.payment.WalletPayment;
 class PaymentMethodTest {
     @Test
     void checkoutCanUseDifferentPaymentMethods() {
-        PaymentMethod card = new CardPayment("Rele-Mbokazi Mkhize", "CARD123", YearMonth.of(2027, 12), "123".charAt(0));
+        PaymentMethod card = new CardPayment("Rele-Mbokazi Mkhize", "CARD123", YearMonth.of(2027, 12), "123".charAt(0),
+            BigDecimal.valueOf(20000));
         WalletPayment wallet = new WalletPayment(
             "WALLET123", "PayNest Wallet", "Rele-Mbokazi Mkhize", BigDecimal.valueOf(20000));
 
@@ -32,7 +34,7 @@ class PaymentMethodTest {
     @Test
     void paymentRailsRejectZeroAndNegativeAmounts() {
         List<PaymentMethod> rails = List.of(
-            new CardPayment("Kamohelo", "CARD123", YearMonth.now().plusMonths(1), '1'),
+            new CardPayment("Kamohelo", "CARD123", YearMonth.now().plusMonths(1), '1', BigDecimal.valueOf(20000)),
             new WalletPayment("WALLET123", "PayNest Wallet", "Customer", BigDecimal.valueOf(20000)),
             new EftPayment("Ubuntu Bank", "Komahelo", "123456789", "123456"),
             new BuyNowPayLater("PayNest", "Komahelo", "1234567890123", "kamzadesmall@example.com"));
@@ -48,5 +50,14 @@ class PaymentMethodTest {
     void buyNowPayLaterRequiresAThirteenDigitNumericId() {
         assertThrows(IllegalArgumentException.class, () -> new BuyNowPayLater(
             "PayNest", "Customer", "123456789012X", "customer@example.com"));
+    }
+
+    @Test
+    void cardPaymentIsDeclinedWhenAmountExceedsCardLimit() {
+        CardPayment card = new CardPayment("Customer", "CARD123", YearMonth.now().plusMonths(1), '1',
+            BigDecimal.valueOf(1000));
+
+        assertFalse(card.processPayment(BigDecimal.valueOf(1000.01)));
+        assertTrue(card.processPayment(BigDecimal.valueOf(1000)));
     }
 }

@@ -82,7 +82,8 @@ The application prints an order summary followed by a payment confirmation. Curr
 - Order summary generation through `OrderService`
 - Locale-aware South African currency formatting
 - Payment method abstraction with card, EFT, wallet, and buy-now-pay-later implementations
-- Payment processing that reports the payment type and amount
+- Payment processing that validates positive amounts and reports the payment type and amount
+- Wallet payments are declined when the balance is insufficient; successful payments reduce the balance
 - Unit tests for order, item, service, summary printing, and payment methods
 
 ## Author

@@ -23,6 +23,7 @@ public class CardPayment extends PaymentMethod { // check if you can extend rath
 
     @Override
     public boolean processPayment(BigDecimal amount) {
+        validateAmount(amount);
         System.out.println("Processing card payment of R" + String.format("%.2f", amount));
         return true; // Simulate successful payment
     }

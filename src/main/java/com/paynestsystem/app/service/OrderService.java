@@ -1,11 +1,27 @@
 package com.paynestsystem.app.service;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.paynestsystem.app.domain.Order;
 import com.paynestsystem.app.domain.OrderItem;
+import com.paynestsystem.app.payment.PaymentMethod;
+import com.paynestsystem.app.payment.PaymentProcessor;
 
 public class OrderService {
+
+    public boolean checkout(Order order, PaymentMethod paymentMethod) {
+        if (order == null || order.getItems().isEmpty()) {
+            throw new IllegalArgumentException("Order cannot be null.");
+        }
+        if (paymentMethod == null) {
+            throw new IllegalArgumentException("Payment method cannot be null.");
+        }
+
+        BigDecimal total = order.calculateTotal();
+        return new PaymentProcessor().processPayment(paymentMethod, total);
+    }
 
     public OrderSummary createOrderSummary(Order order) {
         if (order == null) {

@@ -12,6 +12,7 @@ public class BuyNowPayLater extends PaymentMethod {
 
     @Override
     public boolean processPayment(BigDecimal amount) {
+        validateAmount(amount);
         System.out.println("Processing Buy Now Pay Later payment of R" + String.format("%.2f", amount));
         return true; // Simulate successful payment
     }
@@ -31,7 +32,8 @@ public class BuyNowPayLater extends PaymentMethod {
             throw new IllegalArgumentException("Account holder name cannot be blank.");
         }
 
-        if (accountOwnerId  == null || accountOwnerId.length() !=13 || accountOwnerId.chars().allMatch(Character::isDigit)) {
+        if (accountOwnerId == null || accountOwnerId.length() != 13
+            || !accountOwnerId.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("Account owner ID must be 13 digits");
         }
 
@@ -53,11 +55,11 @@ public class BuyNowPayLater extends PaymentMethod {
         return accountHolderName;
     }
 
-    public String getAccountOwwnerId() {
+    public String getAccountOwnerId() {
         return accountOwnerId;
     }
 
-    public String getEmailAdress() {
+    public String getEmailAddress() {
         return emailAddress;
     }
 }

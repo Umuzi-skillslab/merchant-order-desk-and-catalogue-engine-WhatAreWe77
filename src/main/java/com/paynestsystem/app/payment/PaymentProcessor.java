@@ -7,7 +7,7 @@ public class PaymentProcessor {
         boolean success = method.processPayment(amount);
 
         if (success) {
-            System.out.println("Payment succesfull via " + method.getPaymentType());
+            System.out.println("Payment successful via " + method.getPaymentType());
 
             System.out.println("Amount: R" + String.format("%.2f", amount));
         }   else {

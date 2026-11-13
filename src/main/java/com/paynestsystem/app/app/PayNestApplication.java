@@ -1,15 +1,14 @@
 package com.paynestsystem.app.app;
+import java.math.BigDecimal;
+
 import com.paynestsystem.app.domain.Customer;
 import com.paynestsystem.app.domain.Order;
 import com.paynestsystem.app.domain.Product;
+import com.paynestsystem.app.payment.PaymentMethod;
+import com.paynestsystem.app.payment.WalletPayment;
 import com.paynestsystem.app.service.OrderService;
 import com.paynestsystem.app.service.OrderSummary;
 import com.paynestsystem.app.service.OrderSummaryPrinter;
-import com.paynestsystem.app.payment.PaymentProcessor;
-import com.paynestsystem.app.payment.PaymentMethod;
-import com.paynestsystem.app.payment.CardPayment;
-
-import java.time.YearMonth;
 
 public class PayNestApplication {
     public static void main(String[] args) {
@@ -28,14 +27,15 @@ public class PayNestApplication {
         OrderSummaryPrinter printer = new OrderSummaryPrinter();
         printer.print(orderSummary);
 
-        PaymentMethod paymentMethod = new CardPayment(
+        WalletPayment walletPayment = new WalletPayment(
+            "DEMO-WALLET-1234",
+            "PayNest Wallet",
             customer.getName(),
-            "DEMO-CARD-1234",
-            YearMonth.now().plusYears(2),
-            '7'
+            new BigDecimal("50000.00")
         );
-        PaymentProcessor paymentProcessor = new PaymentProcessor();
-        paymentProcessor.processPayment(paymentMethod, order.calculateTotal());
+        PaymentMethod paymentMethod = walletPayment;
+        orderService.checkout(order, paymentMethod);
+        System.out.println("Remaining wallet balance: R" + String.format("%.2f", walletPayment.getBalance()));
 
     }
 }

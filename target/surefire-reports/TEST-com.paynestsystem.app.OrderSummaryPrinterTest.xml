@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.paynestsystem.app.OrderSummaryPrinterTest" time="0.206" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.paynestsystem.app.OrderSummaryPrinterTest" time="0.041" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ZA"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\Tshepo Sekobile\AppData\Local\Temp\surefire4853560127273426165\surefirebooter-20261113115628716_3.jar C:\Users\Tshepo Sekobile\AppData\Local\Temp\surefire4853560127273426165 2026-11-13T11-56-28_132-jvmRun1 surefire-20261113115628716_1tmp surefire_0-20261113115628716_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Tshepo Sekobile\AppData\Local\Temp\surefire1394519430074531326\surefirebooter-20261113144126653_3.jar C:\Users\Tshepo Sekobile\AppData\Local\Temp\surefire1394519430074531326 2026-11-13T14-41-26_532-jvmRun1 surefire-20261113144126653_1tmp surefire_0-20261113144126653_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Tshepo Sekobile\merchant-order-desk-and-catalogue-engine-WhatAreWe77\target\test-classes;C:\Users\Tshepo Sekobile\merchant-order-desk-and-catalogue-engine-WhatAreWe77\target\classes;C:\Users\Tshepo Sekobile\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\Tshepo Sekobile\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\Tshepo Sekobile\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Tshepo Sekobile\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\Tshepo Sekobile\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Tshepo Sekobile\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\Tshepo Sekobile\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\Tshepo Sekobile\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Tshepo Sekobile\AppData\Local\Temp\surefire4853560127273426165\surefirebooter-20261113115628716_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Tshepo Sekobile\AppData\Local\Temp\surefire1394519430074531326\surefirebooter-20261113144126653_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.2+10-LTS"/>
@@ -60,5 +60,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testPrintFormatsCurrencyAndSummaryLines" classname="com.paynestsystem.app.OrderSummaryPrinterTest" time="0.19"/>
+  <testcase name="testPrintFormatsCurrencyAndSummaryLines" classname="com.paynestsystem.app.OrderSummaryPrinterTest" time="0.037"/>
 </testsuite>

@@ -10,6 +10,7 @@ public class EftPayment extends PaymentMethod {
 
     @Override
     public boolean processPayment(BigDecimal amount) {
+        validateAmount(amount);
         System.out.println("Processing EFT payment of R" + String.format("%.2f", amount));
         return true; // Simulate successful payment
     }
